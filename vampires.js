@@ -1,14 +1,18 @@
 // v0.1
 
 var vampire_test = function(a, b){
-  var digits     = (a.toString() + b.toString()).split("");
-  var multiplied = (a * b).toString().split("");
-  console.log(digits.sort(), multiplied.sort())
-  if (digits.sort() == multiplied.sort()){
+  // Get sorted array of all digits passed to function
+  var digits     = (a.toString() + b.toString()).split("").sort();
+  
+  // Get sorted array of all digits when multiplied
+  var multiplied = (a * b).toString().split("").sort();
+  
+  // Check each digit in each array against the other, by index
+  if (digits.every(function(digit, idx){
+    return digit === multiplied[idx];
+  })){
     return true;
   } else {
-    return false; // fix me
+    return false;
   }
 }
-
-console.log(vampire_test(21,6))
